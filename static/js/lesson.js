@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Get all lesson contents and button containers
     const lessonContents = {
         lesson1: document.getElementById("lesson-1-content"),
         lesson2: document.getElementById("lesson-2-content"),
@@ -8,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lesson5: document.getElementById("lesson-5-content"),
         lesson6: document.getElementById("lesson-6-content"),
     };
-    
+
     const buttonContainers = {
         lesson1: document.getElementById("lesson-1-btn"),
         lesson2: document.getElementById("lesson-2-btn"),
@@ -19,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     let currentLessonKey = "lesson1"; // Default to the first lesson
+    let isTTSSpeaking = false; // Track if TTS is active
 
-    // Function to speak lesson content
     function speakLessonContent(lessonKey) {
         const lessonContent = lessonContents[lessonKey];
         if (!lessonContent) return;
@@ -33,6 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // Create a new SpeechSynthesisUtterance
         const utterance = new SpeechSynthesisUtterance(lessonText);
         utterance.lang = "fil-PH"; // Filipino accent
+
+        // Handle TTS start and end
+        utterance.onstart = () => {
+            isTTSSpeaking = true;
+        };
+        utterance.onend = () => {
+            isTTSSpeaking = false;
+        };
+
         speechSynthesis.speak(utterance);
 
         // Show the current lesson content
@@ -44,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         buttonContainers[lessonKey]?.classList.remove("hidden");
     }
 
-    // Function to navigate lessons
     function navigateLesson(direction) {
         const lessonKeys = Object.keys(lessonContents);
         let currentIndex = lessonKeys.indexOf(currentLessonKey);
@@ -56,8 +63,20 @@ document.addEventListener("DOMContentLoaded", () => {
             currentIndex = Math.max(currentIndex - 1, 0);
         }
 
-        currentLessonKey = lessonKeys[currentIndex];
-        speakLessonContent(currentLessonKey);
+        const nextLessonKey = lessonKeys[currentIndex];
+
+        if (isTTSSpeaking) {
+            const userConfirmed = confirm("May TTS pa na naglalaro. Gusto mo bang itigil ang aralin?");
+            if (userConfirmed) {
+                speechSynthesis.cancel(); // Stop TTS
+                isTTSSpeaking = false;
+                currentLessonKey = nextLessonKey;
+                speakLessonContent(currentLessonKey);
+            }
+        } else {
+            currentLessonKey = nextLessonKey;
+            speakLessonContent(currentLessonKey);
+        }
     }
 
     // Add event listeners to next and previous buttons
@@ -74,14 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Event listeners for the stop button
-    const stopButton = document.getElementById("stop-lesson-btn");
-    if (stopButton) {
-        stopButton.addEventListener("click", () => {
-            speechSynthesis.cancel();
-            console.log("Speech stopped.");
+    const sidebarButtons = document.querySelectorAll('.sidebar-menu a, .filipino-link a, .btn-container button');
+
+    // Add alert for exiting lesson when TTS is active
+    sidebarButtons.forEach(button => {
+        button.addEventListener("click", (event) => {
+            if (isTTSSpeaking) {
+                const userConfirmed = confirm("May TTS pa na naglalaro. Gusto mo bang itigil ang aralin?");
+                if (userConfirmed) {
+                    speechSynthesis.cancel(); // Stop TTS
+                    isTTSSpeaking = false;
+                } else {
+                    event.preventDefault(); // Prevent button action
+                }
+            }
         });
-    }
+    });
 
     // Event listeners for "Start Lesson" buttons
     document.querySelectorAll('.start-lesson-btn').forEach(button => {
