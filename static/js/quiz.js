@@ -3,7 +3,8 @@ let currentQuestionIndex = 0;
 let currentType = '';
 let score = 0;
 let timer;
-let timeLeft = 5; // Set timer to 5 seconds
+let timeLeft = 5; // Timer for each question
+let recognition; // Declare Speech Recognition globally
 
 // Quiz Data
 const questions = {
@@ -24,32 +25,56 @@ const questions = {
     ]
 };
 
-// Function to display the correct quiz container
+// Function to initialize the quiz
 function displayQuiz(type) {
-    // Hide all main containers
     document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
-
-    // Show the QUIZZES container
-    const quizzesContainer = document.querySelector('#lesson-1-identify').closest('.container');
-    quizzesContainer.classList.remove('hidden');
-
-    // Show the selected quiz design container
     document.querySelectorAll('.quiz-design').forEach(el => el.classList.add('hidden'));
-    document.getElementById(`lesson-1-${type}`).classList.remove('hidden');
 
-    // Initialize quiz state
+    const quizContainer = document.querySelector(`#lesson-1-${type}`);
+    quizContainer?.closest('.container')?.classList.remove('hidden');
+    quizContainer?.classList.remove('hidden');
+
     currentType = type;
     currentQuestionIndex = 0;
     score = 0;
 
-    // Display the first question
     displayQuestion();
-
-    // Start the timer
     timeLeft = 5;
     document.querySelector(`#lesson-1-${type} .timer`).textContent = `Time: ${timeLeft}`;
     startTimer();
 }
+
+// Function to start the timer
+function startTimer() {
+    const timerElement = document.querySelector(`#lesson-1-${currentType} .timer`);
+    clearInterval(timer); // Clear any existing timer to prevent overlap
+
+    timer = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timerElement.textContent = `Time: ${timeLeft}`;
+        } else {
+            clearInterval(timer);
+            timerElement.textContent = "Time's up!";
+            autoSubmitAnswer(); // Automatically handle time-out scenario
+        }
+    }, 1000);
+}
+
+// Function to handle time-out
+function autoSubmitAnswer() {
+    const answerElement = document.getElementById('answer');
+    const questionData = questions[currentType]?.[currentQuestionIndex];
+    
+    if (!questionData) return;
+
+    answerElement.textContent = `Walang sagot! Ang tamang sagot ay: ${questionData.answer}. ${questionData.explanation}`;
+    readAnswerAloud(answerElement.textContent);
+
+    setTimeout(nextQuestion, 3000); // Move to the next question after a delay
+}
+// Other parts of the code remain the same...
+
 
 // Function to display the current question
 function displayQuestion() {
@@ -60,33 +85,78 @@ function displayQuestion() {
         return;
     }
 
-    const questionElement = document.querySelector(`#lesson-1-${currentType} #question`);
-    const answerElement = document.querySelector(`#lesson-1-${currentType} #answer`);
-    const respondElement = document.querySelector(`#lesson-1-${currentType} #respond`);
-    const choicesContainer = document.querySelector(`#lesson-1-${currentType} #choices`);
+    const questionElement = document.getElementById('question');
+    const respondElement = document.getElementById('respond');
+    const answerElement = document.getElementById('answer');
 
-    // Clear previous question state
+    // Clear previous content
     questionElement.textContent = '';
     respondElement.textContent = '';
     answerElement.textContent = '';
-    if (choicesContainer) choicesContainer.innerHTML = ''; // Clear multiple-choice options
 
     // Display the question
     questionElement.textContent = questionData.question;
 
-    // If it's multiple-choice, display choices
-    if (currentType === 'multipleChoice') {
-        questionData.choices.forEach((choice, index) => {
-            const choiceButton = document.createElement('button');
-            choiceButton.textContent = choice;
-            choiceButton.classList.add('choice-btn');
-            choiceButton.onclick = () => checkAnswer(choice.toLowerCase());
-            choicesContainer.appendChild(choiceButton);
-        });
+    // Read the question aloud
+    readQuestionAloud(questionData.question);
+}
+
+// Function to initialize Speech Recognition (STT)
+function setupSTT() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'fil-PH'; // Filipino language
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    const holdMicButton = document.getElementById('hold-mic');
+    const respondElement = document.getElementById('respond');
+    const answerElement = document.getElementById('answer');
+
+    // Start recognition on button press
+    holdMicButton.addEventListener('mousedown', () => {
+        recognition.start();
+        respondElement.textContent = 'Nakikinig...'; // Feedback while listening
+    });
+
+    // Stop recognition on button release
+    holdMicButton.addEventListener('mouseup', () => {
+        recognition.stop();
+    });
+
+    // Handle recognition result
+    recognition.onresult = (event) => {
+        const userAnswer = event.results[0][0].transcript.toLowerCase().trim();
+        respondElement.textContent = `Sinagot mo: ${userAnswer}`;
+        checkAnswer(userAnswer);
+    };
+
+    // Log errors for debugging
+    recognition.onerror = (event) => {
+        answerElement.textContent = 'Speech recognition error. Please try again.';
+        console.error('STT Error:', event.error); // Log error details
+    };
+}
+
+// Function to check the answer
+function checkAnswer(userAnswer) {
+    const questionData = questions[currentType]?.[currentQuestionIndex];
+    const answerElement = document.getElementById('answer');
+
+    if (!questionData) return;
+
+    if (userAnswer === '') {
+        answerElement.textContent = `Walang sagot! Ang tamang sagot ay: ${questionData.answer}. ${questionData.explanation}`;
+        readAnswerAloud(answerElement.textContent, () => nextQuestion()); // Pass the nextQuestion callback
+    } else if (userAnswer === questionData.answer.toLowerCase()) {
+        score += 2;
+        answerElement.textContent = `Tama! (+2 puntos)`;
+        readAnswerAloud(answerElement.textContent, () => nextQuestion()); // Pass the nextQuestion callback
+    } else {
+        answerElement.textContent = `Mali! Ang tamang sagot ay: ${questionData.answer}. ${questionData.explanation}`;
+        readAnswerAloud(answerElement.textContent, () => nextQuestion()); // Pass the nextQuestion callback
     }
 
-    // Read the question aloud using TTS (Text-to-Speech)
-    readQuestionAloud(questionData.question);
+    document.querySelector(`#lesson-1-${currentType} .score`).textContent = `Score: ${score}`;
 }
 
 // Function to read the question aloud
@@ -95,61 +165,35 @@ function readQuestionAloud(questionText) {
     speech.text = questionText;
     speech.lang = 'fil-PH'; // Filipino language
     speech.rate = 1;
-    
-    speech.onstart = () => {
-        // Pause the timer when TTS is speaking
-        clearInterval(timer);
-    };
 
+    // Clear any existing timer when speech starts
+    speech.onstart = () => clearInterval(timer);
+
+    // Start the timer only after TTS finishes
     speech.onend = () => {
-        // Resume the timer after TTS stops
+        timeLeft = 5; // Reset the timer for the new question
+        document.querySelector(`#lesson-1-${currentType} .timer`).textContent = `Time: ${timeLeft}`;
         startTimer();
     };
 
     speechSynthesis.speak(speech);
 }
 
-// Function to start the timer
-function startTimer() {
-    timer = setInterval(() => {
-        timeLeft--;
-        document.querySelector(`#lesson-1-${currentType} .timer`).textContent = `Time: ${timeLeft}`;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            nextQuestion();  // Move to the next question after timer runs out
+// Function to read the answer aloud with a callback
+function readAnswerAloud(answerText, callback) {
+    const speech = new SpeechSynthesisUtterance();
+    speech.text = answerText;
+    speech.lang = 'fil-PH';
+    speech.rate = 1;
+
+    // Trigger callback when speech ends
+    speech.onend = () => {
+        if (typeof callback === 'function') {
+            callback();
         }
-    }, 1000);
-}
+    };
 
-// Function to check the answer
-function checkAnswer(userAnswer) {
-    const questionData = questions[currentType]?.[currentQuestionIndex];
-    const answerElement = document.querySelector(`#lesson-1-${currentType} #answer`);
-    const respondElement = document.querySelector(`#lesson-1-${currentType} #respond`);
-
-    if (!questionData) {
-        console.error(`No question data found for type "${currentType}" and index ${currentQuestionIndex}`);
-        return;
-    }
-
-    let userAnswerText = userAnswer.trim();
-
-    if (userAnswerText === '') {
-        respondElement.textContent = `Wala kang sagot! Ang tamang sagot ay: ${questionData.answer}. ${questionData.explanation}`;
-    } else if (userAnswerText === questionData.answer.toLowerCase()) {
-        score += 2;
-        respondElement.textContent = `Tama! (+2 puntos)`;
-    } else {
-        respondElement.textContent = `Mali! Ang tamang sagot ay: ${questionData.answer}. ${questionData.explanation}`;
-    }
-
-    answerElement.textContent = `User's Answer: ${userAnswerText}`; // Show the user's answer
-
-    // Update score display
-    document.querySelector(`#lesson-1-${currentType} .score`).textContent = `Score: ${score}/10`;
-
-    // Move to the next question after a short delay
-    setTimeout(nextQuestion, 3000);
+    speechSynthesis.speak(speech);
 }
 
 // Function to move to the next question
@@ -158,45 +202,15 @@ function nextQuestion() {
     if (currentQuestionIndex < questions[currentType].length) {
         displayQuestion();
         timeLeft = 5;
-        document.querySelector(`#lesson-1-${currentType} .timer`).textContent = `Time: ${timeLeft}`;
         startTimer();
     } else {
         alert(`Tapos na ang quiz! Kabuuang puntos: ${score}`);
-        // Optionally reset quiz or show a summary
         displayQuiz('');
     }
 }
 
-// Event listeners for buttons to start quizzes
+// Initialize STT and setup event listeners
+setupSTT();
 document.getElementById('ToF-1-quiz')?.addEventListener('click', () => displayQuiz('trueFalse'));
 document.getElementById('multify-1-quiz')?.addEventListener('click', () => displayQuiz('multipleChoice'));
 document.getElementById('identify-1-quiz')?.addEventListener('click', () => displayQuiz('identify'));
-
-// Speech-to-Text Functionality
-const micButton = document.getElementById('hold-mic');
-let recognition;
-
-if ('webkitSpeechRecognition' in window) {
-    recognition = new webkitSpeechRecognition();
-    recognition.lang = 'fil-PH';
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    micButton.addEventListener('mousedown', () => {
-        recognition.start();
-    });
-
-    micButton.addEventListener('mouseup', () => {
-        recognition.stop();
-    });
-
-    recognition.onresult = function (event) {
-        const spokenText = event.results[0][0].transcript.toLowerCase();
-        document.querySelector(`#lesson-1-${currentType} #user-respond`).textContent = `Sinabi mo: ${spokenText}`;
-        checkAnswer(spokenText);
-    };
-
-    recognition.onerror = function (event) {
-        console.error('Speech recognition error:', event.error);
-    };
-}
