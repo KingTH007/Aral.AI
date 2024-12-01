@@ -47,18 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle the Lesson Dropdowns (Aralin 1-4) - Show Aralins only after Filipino is clicked
     document.querySelectorAll('.dropLesson > a').forEach(item => {
         item.addEventListener('click', function (event) {
             event.preventDefault();
             const parentLesson = this.parentElement;
             const lessonContent = parentLesson.querySelector('.lesson-content');
 
-            // Toggle the lesson's dropdown
             lessonContent.classList.toggle('show');
             this.querySelector('.ri-arrow-down-s-line').classList.toggle('ri-arrow-up-s-line');
 
-            // Close other lessons' dropdowns under the same subject
             parentLesson.parentElement.querySelectorAll('.dropLesson').forEach(subLesson => {
                 if (subLesson !== parentLesson) {
                     const subLessonContent = subLesson.querySelector('.lesson-content');
@@ -71,19 +68,65 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Disable clicking on locked lesson items
-    document.querySelectorAll('.lesson-content a').forEach(item => {
-        if (item.textContent.includes('True or False') || item.textContent.includes('Multiple Choice') || item.textContent.includes('Identification')) {
-            // Add "locked" functionality to these items
-            item.classList.add('locked');
-            item.style.color = '#888';  // Optional: visually indicate that it's locked
-            item.style.cursor = 'not-allowed';  // Change cursor to "not-allowed" to show it's locked
+    // Function to unlock lesson items for a specific lesson
+    function unlockLesson(buttonId, lessonId) {
+        // Add event listener to the unlock button
+        document.getElementById(buttonId).addEventListener('click', function () {
+            // Find all quiz links within the specified lesson
+            const lessonItems = document.querySelectorAll(`#${lessonId} + .drop-content a`);
 
-            // Prevent click events on locked items
-            item.addEventListener('click', function(e) {
-                e.preventDefault(); // Disable clicking on locked items
-                alert('This item is locked.');
+            // Unlock each item by removing "locked" styles
+            lessonItems.forEach(item => {
+                item.classList.remove('locked');
+                item.style.color = ''; // Reset to default color
+                item.style.cursor = ''; // Reset to default cursor
             });
+
+            // Optional: Provide feedback that the lesson has been unlocked
+            alert(`${lessonId.replace('filipino-', '').replace('-', ' ').toUpperCase()} quizzes have been unlocked!`);
+        });
+    }
+
+    // Unlock buttons and lesson IDs mapping
+    const unlockButtonsAndLessons = [
+        { buttonId: 'unlock-button-1', lessonId: 'filipino-lesson-1' },
+        { buttonId: 'unlock-button-2', lessonId: 'filipino-lesson-2' },
+        { buttonId: 'unlock-button-3', lessonId: 'filipino-lesson-3' },
+        { buttonId: 'unlock-button-4', lessonId: 'filipino-lesson-4' },
+        { buttonId: 'unlock-button-5', lessonId: 'filipino-lesson-5' },
+        { buttonId: 'unlock-button-6', lessonId: 'filipino-lesson-6' }
+    ];
+
+    // Iterate over each unlock button and associate it with its lesson
+    unlockButtonsAndLessons.forEach(mapping => {
+        unlockLesson(mapping.buttonId, mapping.lessonId);
+    });
+
+    // Function to handle quiz link clicks
+    function showInstruction(instructionId) {
+        // Hide all instruction containers
+        document.querySelectorAll('.instruction-design').forEach(container => {
+            container.classList.add('hidden');
+        });
+
+        // Show the selected instruction container
+        const instructionContainer = document.getElementById(instructionId);
+        if (instructionContainer) {
+            instructionContainer.classList.remove('hidden');
         }
+    }
+
+    // Attach click events to quiz links
+    document.querySelectorAll('.lesson-content a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Determine the corresponding instruction ID
+            const quizId = this.id; // e.g., "ToF-1-quiz"
+            const instructionId = quizId.replace('-quiz', '').replace('ToF', 'Instruction-ToF');
+
+            // Show the corresponding instruction container
+            showInstruction(instructionId);
+        });
     });
 });

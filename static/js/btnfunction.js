@@ -360,3 +360,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the ToF-1-quiz link element
+    const tofQuizLink = document.getElementById('ToF-1-quiz');
+
+    // Add a click event listener to the ToF-1-quiz link
+    tofQuizLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Show the Instruction-1-ToF div
+        document.getElementById('Instruction-1-ToF').classList.remove('hidden');
+
+        // Hide other instruction divs (if necessary)
+        document.getElementById('Instruction-1-multiple').classList.add('hidden');
+        document.getElementById('Instruction-1-identify').classList.add('hidden');
+    });
+});

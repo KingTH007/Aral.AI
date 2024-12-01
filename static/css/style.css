@@ -41,14 +41,6 @@ body {
 }
 
 #sidebar ul li a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #ffffff;
-    transition: background 0.3s;
-}
-
-#sidebar ul li a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,6 +48,11 @@ body {
     text-decoration: none;
     color: #ffffff;
     transition: background 0.3s;
+}
+
+
+#sidebar ul li a:hover {
+    background-color: #de9e48;
 }
 
 #sidebar .drop-content {
@@ -356,6 +353,180 @@ main {
     color: #fff; /* White text on hover */
     transform: translateY(-2px); /* Slight upward movement */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+}
+
+/* Instruction Section Styling */
+.instruction-design {
+    width: 100%;
+    padding: 20px;
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.instruction-design h1 {
+    color: #ffffff;
+    font-size: 28px;
+    text-align: left;
+}
+
+.instruction-design h1 strong {
+    color: #de9e48;
+    font-size: 28px;
+    text-align: left;
+}
+
+.instruction-design h2 {
+    color: #ffffff;
+    font-size: 22px;
+    text-align: left;
+}
+
+.info {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.instruction-btn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.instruction-btn-design {
+    background-color: #7a431d;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.instruction-btn-design:hover {
+    background-color: #de9e48; /* White text on hover */
+}
+
+/* Quiz Styling */
+/* Identify Design Class */
+.quiz-design {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* To make the footer fixed within this container */
+    overflow-y: auto;
+    gap: 20px;
+}
+
+/* Header Styling */
+.quiz-design h1 {
+    align-self: flex-start;
+    font-weight: bold;
+    color: #de9e48;
+    margin-bottom: 10px;
+}
+
+/* Question Bubble (Left Bubble) */
+.question-design {
+    align-self: flex-start;
+    max-width: 70%;
+    padding: 15px;
+    background-color: #eec84a;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Respond Bubble (Right Bubble) */
+.respond-design {
+    align-self: flex-end;
+    max-width: 70%;
+    padding: 15px;
+    background-color: #dcedc8;
+    color: #333;
+    font-size: 16px;
+    border-radius: 15px;
+    border-top-right-radius: 0;
+    text-align: left;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Answer Bubble (Left Bubble with Different Style) */
+.answer-design {
+    align-self: flex-start;
+    max-width: 70%;
+    padding: 15px;
+    background-color: #fff3e0;
+    color: #555;
+    font-size: 14px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Quiz Footer Section */
+.quiz-foot-design {
+    position: absolute;
+    bottom: 0; /* Sticks the footer to the bottom */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 2px solid #ccc; /* Adds a border line above the footer */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Timer (Left Side) */
+.quiz-foot-design .timer {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Buttons (Center) */
+.quiz-foot-design .quiz-btn-design {
+    display: flex;
+    gap: 10px;
+}
+
+.quiz-foot-design .quiz-btn-design button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #de9e48;
+    color: #563727;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-foot-design .quiz-btn-design button:hover {
+    background-color: #c0843c; /* Darker shade on hover */
+    color: #fff;
+}
+
+/* Score (Right Side) */
+.quiz-foot-design .score {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
 }
 
 /* hidden */
