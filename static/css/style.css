@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+}
+
+#sidebar {
+    width: 230px;
+    background-color: #372c2e;
+    color: #ffffff;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar .logo {
+    padding: 20px;
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background 0.3s;
+}
+
+#sidebar ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background 0.3s;
+}
+
+#sidebar .drop-content {
+    overflow: hidden;
+    padding-left: 15px;
+    margin-top: 5px;
+    height: 0px;
+    transition: 300ms ease-in-out;
+}
+
+#sidebar .drop-content.show {
+    height: auto;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+}
+
+.su button,
+.si button {
+    padding: 10px;
+    width: 80px;
+    background-color: #7a431d;
+    border: none;
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.su button:hover,
+.si button:hover {
+    background-color: #de9e48;
+}
+
+/* ----------------- */
+/*main*/
+main {
+    margin-left: 230px;
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #563727;
+    height: 100vh;
+}
+
+/* Main Container Styling */
+.container {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 1500px;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Intro */
+.intro {
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    margin-bottom: 2px;
+    color: #ffffff;
+}
+
+.intro h2 strong{
+    font-size: 2.5rem;
+    color: #de9e48;
+}
+
+.intro h4 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+/* Filipino container */
+.filipino-design h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.filipino-link {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+}
+
+.filipino-link li {
+    width: 30%;
+    text-align: center;
+}
+
+.filipino-link li a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #7a431d;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.filipino-link li a:hover {
+    background-color: #de9e48;
+}
+
+@media (max-width: 768px) {
+    .filipino-link li {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .filipino-link li {
+        width: 100%;
+    }
+}
+
+/* Lesson Container*/
+.lesson-title-design {
+    text-align: center;
+    width: 100%;
+}
+
+.lesson-title-design h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ebeaec;
+    margin-bottom: 20px;
+}
+
+.lesson-title-design h2 strong {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #de9e48;
+    margin-bottom: 20px;
+}
+
+.start-lesson-btn {
+    background-color: #7a431d;
+    color: #ebeaec;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-lesson-btn:hover {
+    background-color: #de9e48;
+}
+
+/* Lesson content design */
+.lesson-design {
+    max-height: 100%;
+    overflow-y: auto; 
+    padding: 10px;
+    box-sizing: border-box; 
+    border-radius: 10px; 
+    color: #ebeaec; 
+}
+
+.lesson-design::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lesson-design::-webkit-scrollbar-track {
+    background: #563727;
+}
+
+.lesson-design::-webkit-scrollbar-thumb {
+    background: #de9e48;
+    border-radius: 10px;
+}
+
+.lesson-design::-webkit-scrollbar-thumb:hover {
+    background: #c0843c;
+}
+
+.lesson-design h2,
+.lesson-design h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #de9e48; 
+}
+
+.lesson-design p {
+    margin-bottom: 15px;
+    margin-left: 20px; 
+    line-height: 1.5;
+}
+
+.lesson-design ul {
+    margin-left: 20px; 
+    margin-bottom: 15px;
+}
+
+.lesson-design img {
+    display: block; 
+    max-width: 45%;
+    height: auto; 
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-wrapper {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensures the wrapper spans the full container width */
+    height: 100%;
+}
+
+.unlock-design {
+    background-color: #de9e48; /* Button background color */
+    color: #563727; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for the buttons */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-left: 10px; /* Add spacing between buttons */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.unlock-design:hover{
+    background-color: #c0843c; /* Darker shade on hover */
+    color: #fff; /* White text on hover */
+    transform: translateY(-2px); /* Slight upward movement */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+}
+
+/* Lesson Button */
+.btn-container {
+    width: 90%;
+    max-width: 1500px;
+    border-top: 2px solid #de9e48;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #563727;
+}
+
+/* Button Styling */
+.btn-container .btn-design button {
+    background-color: #de9e48; /* Button background color */
+    color: #563727; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for the buttons */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-left: 10px; /* Add spacing between buttons */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Button Hover Effect */
+.btn-container .btn-design button:hover {
+    background-color: #c0843c; /* Darker shade on hover */
+    color: #fff; /* White text on hover */
+    transform: translateY(-2px); /* Slight upward movement */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+}
+
+/* hidden */
+.hidden {
+    display: none;
+}

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aral.AI</title>
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    <body>
+        <nav id="sidebar">
+            <a class="logo">Aral.AI</a>
+             
+            <ul class="home">
+                <li><a href="main.html">Home</a></li>
+            </ul>
+            <ul class="sidebar-menu">
+                <li class="dropdown">
+                    <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Subject <i class="ri-arrow-down-s-line"></i></a>
+                    <ul class="drop-content" aria-label="submenu">
+                    <li class="dropSub">
+                        <a href="#" id="filipino-subject">Filipino<i class="ri-arrow-down-s-line"></i></a>
+                        <ul class="drop-content">
+                            <li class="dropLesson"> 
+                                <a href="#" id="filipino-lesson-1">Aralin 1<i class="ri-arrow-down-s-line"></i></a>
+                                <ul class="drop-content lesson-content">
+                                    <li><a href="#">True or False</a></li>
+                                    <li><a href="#">Multiple Choice</a></li>
+                                    <li><a href="#" id="identify1-quiz">Identification</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropLesson">
+                                <a href="#" id="filipino-lesson-2">Aralin 2<i class="ri-arrow-down-s-line"></i></a>
+                                <ul class="drop-content lesson-content">
+                                    <li><a href="#">True or False</a></li>
+                                    <li><a href="#">Multiple Choice</a></li>
+                                    <li><a href="#">Identification</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropLesson">
+                                <a href="#" id="filipino-lesson-3">Aralin 3<i class="ri-arrow-down-s-line"></i></a>
+                                <ul class="drop-content lesson-content">
+                                    <li><a href="#">True or False</a></li>
+                                    <li><a href="#">Multiple Choice</a></li>
+                                    <li><a href="#">Identification</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropLesson">
+                                <a href="#" id="filipino-lesson-4">Aralin 4<i class="ri-arrow-down-s-line"></i></a>
+                                <ul class="drop-content lesson-content">
+                                    <li><a href="#">True or False</a></li>
+                                    <li><a href="#">Multiple Choice</a></li>
+                                    <li><a href="#">Identification</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropLesson">
+                                <a href="#" id="filipino-lesson-5">Aralin 5<i class="ri-arrow-down-s-line"></i></a>
+                                <ul class="drop-content lesson-content">
+                                    <li><a href="#">True or False</a></li>
+                                    <li><a href="#">Multiple Choice</a></li>
+                                    <li><a href="#">Identification</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropLesson">
+                                <a href="#" id="filipino-lesson-6">Aralin 6<i class="ri-arrow-down-s-line"></i></a>
+                                <ul class="drop-content lesson-content">
+                                    <li><a href="#">True or False</a></li>
+                                    <li><a href="#">Multiple Choice</a></li>
+                                    <li><a href="#">Identification</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </li>
+            </ul>
+            <div class="buttons">
+                <a class="su" href="#"><button>SIGN UP</button></a>
+                <a class="si" href="#"><button>SIGN IN</button></a>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+                <div class="intro">
+                    <h2>Welcome to <strong>Aral.AI</strong></h2>
+                    <h4>Your Shortcut to Smarter Learning!</h4>
+                    <p>Why study harder when you can study smarter? PALSTUDY AI is your all-in-one study buddy, powered by cutting-edge technology to make learning fast, fun, and effective. </p>
+                    <p>Simplify tough topics, master exams, and supercharge your knowledge—all tailored to you.</p>
+                    <p>Your success starts here. Let’s make studying effortless!</p>
+                </div>
+            </div>
+            <div class="container hidden">
+                <div id="filipino-lessons" class="filipino-design">
+                    <h2>FILIPINO SUBJECT</h2>
+                    <ul class="filipino-link">
+                        <li><a href="#" id="lesson-1-link" class="button1">Aralin 1</a></li>
+                        <li><a href="#" id="lesson-2-link" class="button1">Aralin 2</a></li>
+                        <li><a href="#" id="lesson-3-link" class="button1">Aralin 3</a></li>
+                        <li><a href="#" id="lesson-4-link" class="button1">Aralin 4</a></li>
+                        <li><a href="#" id="lesson-5-link" class="button1">Aralin 5</a></li>
+                        <li><a href="#" id="lesson-6-link" class="button1">Aralin 6</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lesson title -->
+            <div class="container hidden">
+                <div id="lesson-1-title" class="lesson-title-design hidden">
+                    <h2><strong>Aralin 1:</strong> Panitikan and Karunungang-bayan</h2>
+                    <button id="start-lesson-btn1" class="start-lesson-btn">Start Lesson</button>
+                </div>
+                <div id="lesson-2-title" class="lesson-title-design hidden">
+                    <h2><strong>Aralin 2:</strong>  Noon at Ngayong Wika at Gramatika: Paghahambing</h2>
+                    <button id="start-lesson-btn2" class="start-lesson-btn">Start Lesson</button>
+                </div>
+                <div id="lesson-3-title" class="lesson-title-design hidden">
+                    <h2><strong>Aralin 3:</strong> Sanhi at Bunga</h2>
+                    <button id="start-lesson-btn3" class="start-lesson-btn">Start Lesson</button>
+                </div>
+                <div id="lesson-4-title" class="lesson-title-design hidden">
+                    <h2><strong>Aralin 4:</strong> Kayarian ng Pangungusap</h2>
+                    <button id="start-lesson-btn4" class="start-lesson-btn">Start Lesson</button>
+                </div>
+                <div id="lesson-5-title" class="lesson-title-design hidden">
+                    <h2><strong>Aralin 5:</strong> Pagsulat ng Sariling Alamat, Wastong Pagsulat</h2>
+                    <button id="start-lesson-btn5" class="start-lesson-btn">Start Lesson</button>
+                </div>
+                <div id="lesson-6-title" class="lesson-title-design hidden">
+                    <h2><strong>Aralin 6:</strong> Gamit ng mga Bantas</h2>
+                    <button id="start-lesson-btn6" class="start-lesson-btn">Start Lesson</button>
+                </div>
+            </div>
+
+            <!---Lesson Content Container-->
+            <div class="container hidden">
+                <div id="lesson-1-content" class="lesson-design hidden">
+                    <h2>Aralin 1: Panitikan (Kahulugan at Kahalagahan) <br>
+                        at Karununganp-bayan (Salawikain, Sawikain, Kasabihan, Bugtong)</h2> <br>
+                        <h4><strong>PANITIKAN</strong>:</h4>
+                            <p> - Ito ay nagmula sa salitang “pang-titik-an” na ang ibig sabihin ay literatura o mgaakdang nasusulat.<br>
+                                - Ito ay naglalaman ng mga akdang may kinalaman sa pang-araw-araw na buhay, mga kathang-isip, pag-ibig, kasaysayan at iba pa.</p>
+                        <h4>KAHULUGAN NG PANITIKAN</h4>
+                            <p>- Ang pilipinong salita ng “panitikan” ay nanggaling sa wikang latin na “littera” na ang ibig sabihin ay “titik”. <br>
+                            Sa pinakapayak na pagkakalarawan, ito ay angpagsusulat ng tuwiran at patula na nag uugnay sa isang tao.<br> 
+                            Isang malinaw nasalamin, larawan, repleksyon o representasyon ng buhay, karanasan, lipunan at kasaysayan.</p>
+                        <h4>KAHALAGAHAN NG PAG-AARAL NG PANITIKANG PILIPINO</h4>
+                            <ul>
+                                <li>Mabatid ang kaugalian, tradisyon at kultura</li>
+                                <li>Maipagmalaki ang manunulat na Pilipino</li>
+                                <li>Mabatid ang mga akdang Pilipino</li>
+                                <li>Mabatid ang sariling kahusayan, kapintasan at kahinaan</li>
+                            </ul>
+                        <br>
+                        <h4><strong>KARUNUNGANG-BAYAN</strong></h4>
+                        <h4>SALAWIKAIN</h4>
+                            <p>- Ang salawikain ay mga kasabihan o kawikaan na nagbibigay <br>
+                            o nagpapanuto ngmagagandang aral o gabay sa pamumuhay, sa asal, sa pakikipagkapwa.</p>
+                        <h4>SAWIKAIN</h4>
+                            <p>- Ang sawikain ay kasabihan o kawikaan na may dalang aral na maaaring tumukoysa isang idyoma, <br>
+                            isang pagpapahayag na ang kahulugan ay hindi komposisyunal omatatalinghagang salita.</p>
+                            <p><strong>Halimbawa: </strong> Ilaw ng tahanan – INA</p>
+                            <img src="../static/img/1.jpg" alt="IlawNgTahanan">
+                        <h4>KASABIHAN</h4>
+                            <p>- Ang kasabihan ay bahagi na ng kulturang Pilipino. Ito ay ipinasa sa atin ng ating mga ninuno, <br>
+                            ang kasabihan ay nagbibigay ng paalala at mabuting aral sa atin. </p>
+                            <p><strong>Halimbawa: </strong> Walang lihim na hindi nabubunyag, walang totoo na hindi nahahayag</p>
+                            <img src="../static/img/2.jpg" alt="WalangLihim">
+                        <h4>BUGTONG</h4>
+                            <p>- Isang pangungusap o tanong na may doble o nakatagong kahulugan na nilulutasbilang isang palaisipan.</p>
+                            <p><strong>Halimbawa: </strong> Binti walang hita, may tuktok walang mukha. (KABUTE)</p>
+                            <img src="../static/img/3.jpg" alt="Kabute">
+
+                            <div class="button-wrapper">
+                                <button id="unlock-button-1" class="unlock-design"> I-UNLOCK ANG  MGA PAGSUSULIT </button>
+                            </div>
+                </div>
+
+                <div id="lesson-2-content" class="lesson-design hidden">
+                    <h2>Aralin 2: Noon at Ngayon Wika AT Gramati: PAGHAHAMBING </h2> <br>
+                        <h4><strong>Pag-iisa-isa sa dalawang uri ng paghahambing</strong>:</h4>
+                        <h4>1. Paghahambing ng Pagkatulad</h4>
+                            <p>- Ginagamit ito kung ang dalawang ihinahambing ay antas na katangian ng isang bagay o anuman.</p>
+                            <p><strong>Halimbawa: </strong> Magkasinghaba ang buhok nina Ana at Elena. Magkasingtangkad kami ni Miguel.</p>
+                        <h4><strong>Dalawang Uri ng Pahambing na Magkatulad</strong>:</h4>
+                        <h4>PANLAPI </h4> 
+                            <p>- Ang <b>PANLAPI</b> ay katagang ginagamit sa hambingang magkatulad.</p>
+                            <p><strong>Kasing-, magka-, at magsing-</strong> (pantay na may inihahambing)</p>
+                            <p><strong>D, L, R, S, T </strong> (Kasin-, magkasin-, sin-, magsin- at magsing-)</p>
+                            <p><strong>B at P </strong> (Kasin-, magkasin-, sin-, magsin- at magsing-)</p>
+                            <p><strong>Halimbawa: </strong><br>
+                                ⦁ <ins><b>Magsim</b>bilis</ins> ang paglaganap ng mga bugtong at mga salawikain noong unang panahon. <br>
+                                ⦁ <ins><b>Kasin</b>talino</ins> ng mga makata natin ngayon ang mga ninuno natin sa paglikha ngtula. </p>
+                        <h4>KATAGA</h4> 
+                            <p> - Ang <b>KATAGA</b> naman ay isang salita o parirala na ginagamit upangilarawan ang isang bagay o ipahayag ang isang konsepto, lalo na sa isang partikular na uri ng wika o sangay ng pag-aaral. </p>
+                            <p><b>Halimbawa: </b>Kapangalan</p>
+                        <h4>2. Paghahambing na Di-Magkatulad</h4>
+                            <P>- Ginagamit ito kung ang hinahambing ay magkaiba ang antas ng isang bagay o anuman.</P>
+                        <h4><strong>Dalawang Uri ng Pahambing na Di-Magkatulad</strong></h4>
+                        <h4>PASAHOL</h4>
+                            <p>Ang <b>PASAHOL</b> ay paghahambing ng mas maliit o may mahabangkatangian halimbawa ang salitang lalo-, di-gaano-, di-lubha-, di-totoo-, at di-gasino.</p>
+                            <p><strong>Halimbawa: </strong><br>
+                                ⦁	Ang mga katutubong Pilipino ay <ins>di-gaanong</ins> marunong sa pagsasalita ngwikang kastila kaysa sa mga Pilipinong naninirahan sa lungsod. <br>
+                                ⦁	<ins>Di-gasinong</ins> matangkad ang mga Pilipino di tulad ng mga Kastila
+                            </p>
+                        <h4>PALAMANG</h4>
+                            <p>Ang <b>PALAMANG</b> naman ay nakahihigit o nakalalamang ang katangian sa isang dalawang pinaghahambing halimbawa na ang lalo, mas, di-hamak, lubha at labis.</p>
+                            <p><strong>Halimbawa: </strong><br>
+                                ⦁	<ins>Di-hamak</ins> na mahusay ang mga Pilipinong lumikha ng tula kaysa sa mga Kastila. <br>
+                                ⦁	<ins>Labis</ins> na masipag ang mga paring Kastila sa pagpapalaganap ng kanilangrelihiyon kaysa sa iba nilang kababayan.                            
+                            </p>
+                        <br>
+                        <h4>MATATALINGHAGANG PAHAYAG</h4>
+                            <p>- Isang katangian ng kulturang Pilipino ang pagpapahalaga ng mabuting pakikitungo at pakikipagrelasyon sa pamilya at sa ating kapwa. Kaya nga, maging noong unangpanahon, gumamit sila ng matatalinghaga o eupemistikong salita upang mangaral at maiwasto ang ugali o kilos ng isang nakababata o nakatatanda na hindi nakakasakit ngdamdamin.</p>
+                        <br>
+                        <h4>MATATALINGHAGANG PAHAYAG AT EUPEMISTIKO NG PAHAYAG</h4>
+                            <p>- Ito ang mga salitang may malalim na kahulugan at pampalubag loob upang palitanang mga salitang masyadong matalim.</p>
+                            <p><strong>Halimbawa: </strong>  Sumakabilang buhay na sa halip ay na natigok, natepok o natodas.</p>
+                    
+                            <div class="button-wrapper">
+                                <button id="unlock-button-2" class="unlock-design"> I-UNLOCK ANG  MGA PAGSUSULIT </button>
+                            </div>                
+                </div>
+
+                <div id="lesson-3-content" class="lesson-design hidden">
+                    <h2>Aralin 3: SANHI AT BUNGA </h2> <br>
+                        <h4>Sanhi</h4>
+                            <p>- Ang <b>sanhi</b> ay tumutukoy sa pinagmulan o dahilan ng isang pangyayari.</p>
+                        <h4>Bunga</h4>
+                            <p>- Ang <b>bunga</b> naman ay ang siyang kinalabasan o dulot ng naturang pangyayari.</p>
+                        <br>
+                            <p>- Ang pagbibigay ng sanhi at bunga ay tumutukoy sa pinakaugat o dahilan ng isangpangyayari at magiging bunga o epekto nito. Ang ugnayan ng sanhi at bunga ayinihuhudyat ng mga pang-ugnay na maaaring salita o lipon ng salita na tinatawag napangatnig. Ang maayos at tamang paggamit ng mga hudyat ng sanhi at bunga aynakakatulong upang maipahayag ang paksa nang malinaw at mabisa.</p>
+                            <p>Narito ang mga salita na nag-uugnay ng sanhi at bunga:</p>
+                            <img src="../static/img/4.jpg" alt="sanhi at bunga"> 
+                        <br>
+                        <h4>Epiko</h4>
+                            <p>- Tumatalakay sa kabayanihan at pakikipagtunggali ng isang tao o mga tao laban samga kaaway. Halos hindi kapani paniwala ang mga tagpuan dahil makakabalaghan ang mga ito.</p>
+                        <br>
+                        <h4>Manobo</h4>
+                            <p>- Ang ibig sabihin ng salitang “manobo” ay “tao” o “mga tao”, na ito ay galing sa salitang “mansuba” na hango sa dalawang salitang “man” na ibig sabihin ay tao; at “suba” na nangangahulugang “ilog”, samakatuwid ang kahulugan ng “mansuba” ay “taong-ilog”.</p>
+                            <img src="../static/img/5.jpg" alt="manobo">
+                        <h4>Dalawang bahagi ng Pangungusap</h4>
+                        <h4>Sinumo</h4>
+                            <p>Ang paksa ang pinag-uusapan. Pinangungunahan ng pantukoy na pambalanang ang, <i>ang mga</i> o pantukoy na <i>si at sina.</i></p>
+                            <p><strong>Halimbawa: </strong>  <br>
+                                <ins>Ang mga</ins> bata ay nagbabasa ng aklat.<br>
+                                <ins>Ang</ins> bahay nina Aling Corazon ay di naman pala </p>
+                        <h4>Panag-uri</h4>
+                            <P>Naglalarawan sa simuno o paksa. Sinusundan ng panandang <I>“ay”</I></P>
+                            <p><strong>Halimbawa: </strong>  Ang puno <ins>ay</ins> tinumba ng bagyo.</p>
+
+                            <div class="button-wrapper">
+                                <button id="unlock-button-3" class="unlock-design"> I-UNLOCK ANG  MGA PAGSUSULIT </button>
+                            </div>
+                </div>
+
+                <div id="lesson-4-content" class="lesson-design hidden">
+                    <h2>Aralin 4: KAYARIAN NG PANGUNGUSAP</h2> <br>
+                        <h4>1. Payak na pangungusap</h4>
+                            <p>- May isang buong diwa at kaisipan. </p>
+                            <p><strong>Halimbawa: </strong>  <br>
+                                Ang pagdarasal ay di dapat kalimutan. <br>
+                                Ang tamang pagkain ay dapat nasa oras. </p>
+                        <h4>Mga paraan sa pagbuo ng Payak na Pangungusap</h4>
+                            <img src="../static/img/6.jpg" alt="payak na pangungusap">
+                            <p> <b>a. PPk + PPn</b> - Mabuting tao ang nakatira sa bahay na iyan. <br>
+                                <b>b. PPk + TPn</b> - Talagang mapagkakatiwalaan at maaasahan ang mga pangkat ng mga mag-aaralmula sa Mangga. <br>
+                                <b>c. TPk + PPn</b> - Magkaklase sina Rita, Ken, Julie at Rayver. <br>
+                                <b>d. TPk + TPn</b> - Ako at ang aking kapatid ay mag-aaral sa umaga at magtatrabaho sa gabi sa darating na pasukan. 
+                            </p>
+                        <h4>2. Tambalang Pangungusap</h4>
+                            <p> - Binubuo ng dalawa o higit pang sugnay na makapag-iisa na pinag-uugnay ng mgapangatnig tulad ng at, at saka, o pati, subalit, datapwat, habang at iba pa.
+                            <br>- May 1 buong diwa at kaisipan. </p>
+                            <p><b>2PPng. + Ptg. (2 Payak na Pangungusap + Pangatnig)</b></p>
+                            <p><strong>Halimbawa: </strong> <ins>Pinameryenda ko muna si Aling Luisita</ins> habang <ins>hinihintay niya ang aking ina.</ins> <br>
+                                <ins>Gusto niyang magpatuloy ng pag-aaral sa Pamantasan </ins> subalit <ins>kakapusin siya ng martikula.</ins></p>
+                        <h4>3. Hugnayang Pangungusap (1SM + ISDM)</h4>
+                            <p>- Binubuo ng isang punong sugnay at isa o mahigit pang katulong na sugnay</p>
+                            <p><strong>Halimbawa: </strong>Si Lina ay madaling makapag tapos sapagkat masipag mag-aral.</p>
+                        <br>
+                        <h4> 1PPng. + 1SDM + Ptg. 1 PAYAK NA PANGUNGUSAP + 1 SUGNAY NA DI-MAKAPAG-IISA + PANGATNIG </h4>
+                        <h4> Sungay na makapag-iisa </h4>
+                            <p> - Nagbibigay ng isang buong diwa at maaring ituring na ganap na pangungusap.</p>
+                            <p><strong> Halimbawa:</strong> Nagpasalamat si Shane Marie kay Angelo.</p>
+                        <h4>Sugnay na di-makapag-iisa</h4>
+                            <p>- Mayroon itong simuno at panaguri ngunit hindi buo ang diwa kaya gumaganaplamang bilang bahagi ng pananalita tulad ng sugnay na pang-uri, sugnay na pang-abay at sugnay na pangngalan.</p>
+                            <p><strong>Halimbawa:</strong> Ang ingay na narinig ko kanina ay mula sa kusina.</p>
+                        <br>
+                        <h4>WIKANG PILIPINO</h4>
+                            <p>- Ang wikang Pilipino ay mayaman at hitik sa maraming klase ng panitikan. Gabay ito at gamit ng ating mga linggwistiko at mga manunulat sa paglimbag at paglathala ng mga iba’t ibang uri ng babasahin. Isang uri ng panitikang Pilipino ang matalinhagang salita.</p>
+
+                            <div class="button-wrapper">
+                                <button id="unlock-button-4" class="unlock-design"> I-UNLOCK ANG  MGA PAGSUSULIT </button>
+                            </div>
+                </div>
+
+                <div id="lesson-5-content" class="lesson-design hidden">
+                    <h2>Aralin 5: PAGSULAT NG SARILING ALAMAT, WASTONG PAGSULAT <br>
+                        (Paggamit ng malaking letra) </h2> <br>
+                        <h4>Gamit ng Malaking titik</h4>
+                        <h4>1. Sa simula ng pangungusap</h4>
+                            <p>- Ang unang titik sa isang pangungusap ay nagsisimula sa malaking titik</p>
+                            <p><strong>Halimbawa:</strong> <br> <b>A</b>ng magkaibigan ay nag-uusap. <br> <b>M</b>arami akong paboritong basahin.</p>
+                        <h4>2. Sa Tiyak na PANGNGALAN (Nouns)</h4>
+                            <p>- Ang lahat na tiyak na ngalan ng TAO, BAGAY, LUGAR, PANGYAYARI at HAYOP ay nakasulat sa malaking titik.</p>
+                            <p><strong>Halimbawa:</strong><br>
+                                <b>A</b>nna – TAO <br>
+                                <b>M</b>ongol - BAGAY (lapis) <br>
+                                <b>B</b>ohol – LUGAR <br>
+                                <b>P</b>asko – PANGYAYARI <br>
+                                <b>A</b>antay - HAYOP (aso) </p>
+                                <img src="../static/img/7.png" alt="tiyak na pangalan">
+                        <h4>3. Sa pamagat ng aklat o palabas</h4>
+                            <p>- Ang mga aklat, ang kwento ganoon din ang mga palabas ay ginagamitan ngmalaking titik. Ang bawat salita ay nagsisimula sa malaking titik.</p>
+                            <p><strong>Halimbawa:</strong><br>
+                                <b>A</b>ng <b>P</b>agbabago sa <b>B</b>uhay ng <b>B</b>atang si <b>J</b>ose - (pamagat ng kwento) <br>
+                                <b>N</b>oli <b>M</b>e <b>T</b>angere - (pamagat ng aklat) <br>
+                                <b>G</b>oing Bulilit - (palabas) <br>
+                                <b>T</b>V Patrol - (palabas) </p>
+                                <img src="../static/img/8.png" alt="aklat o palabas">
+
+                    <div class="button-wrapper">
+                        <button id="unlock-button-5" class="unlock-design"> I-UNLOCK ANG  MGA PAGSUSULIT </button>
+                    </div>
+                </div>
+
+                <div id="lesson-6-content" class="lesson-design hidden">
+                    <h2>Aralin 6: Wastong Pagsulat: Gamit ang Bantas</h2> <br>
+                        <h4>1. TULDOK (.)</h4>
+                            <p>- Ang tuldok ay ginagamit na pananda: Sa katapusan ng pangungusap na paturol opasalaysay at pautos.</p>
+                            <p><Strong>Halimbawa: </Strong>Igalang natin ang Pambansang Awit.</p>
+                        <h4>2. PANANONG (?)</h4>
+                            <p>- Ginagamit ang pananong sa pangungusap na patanong.</p>
+                            <p><Strong>Halimbawa: </Strong>Ano ang pangalan mo? <br>Sasama ka ba?</p>
+                        <h4>3. PADAMDAM (!)</h4>
+                            <p>- Ang bantas na padamdam ay ginagamit sa hulihan ng isang kataga, parirala opangungusap na nagsasaad ng matindi o masidhing damdamin.</p>
+                            <p><Strong>Halimbawa: </Strong>Mabuhay ang Pangulo! <br>Uy! Ang ganda ng bago mong sapatos. <br>Aray! Naapakan mo ang paa ko.</p>
+                        <h4>4. PAGGAMIT NG KUWIT (,)</h4>
+                            <p>- Ginagamit din ang kuwit sa paghihiwalay ng isang sinipi sa paghihiwalay ngmagkakasunod na salita at lipon ng mga salitang magkakauri.</p>
+                            <p><Strong>Halimbawa: </Strong>Kumain ka ng itlog, gulay at sariwang bungang-kahoy.</p>
+                        <h4>5. PAGGAMIT NG KUDLIT (‘)</h4>
+                            <p>- Ginagamit na panghalili ang kudlit sa isang titik na kina-kaltas.</p>
+                            <p><Strong>Halimbawa: </Strong>Siya’t ikaw ay may dalang pagkain. <br>Ako’y mamamayang Filipino at may tungkulin mahalin at pangalagaan ang aking bayan.</p>
+                        <h4>6. PAGGAMIT NG GITLING (-)</h4>
+                            <p>- Ginagamit ang gitling (-) sa loob ng salita sa mga sumusunod na pagkakataon: Sapag-ulit ng salitang-ugat o mahigit sa isang pantig ng salitang-ugat.</p>
+                            <p><Strong>Halimbawa: </Strong>araw-araw, isa-isa, apat-apat, dala-dalawa, sari-sarili, kabi-kabila, masayang-masaya</p>
+                        <h4>7. TUTULDOK (:)</h4>
+                            <p>- Ginagamit matapos maipuna ang pagpapakilala sa mga sumusunod na paliwanag. Ginagamit kung may lipon ng mga salitang kasunod.</p>
+                            <p><Strong>Halimbawa: </Strong>Maraming halaman ang namumulaklak sa hardin tulad ng: Rosal, Rosas, Orchids, Sampaguita, Santan at iba pa.</p>
+                        <h4>8. TUTULDOK KUWIT (;)</h4>
+                            <p>- Ito ay naghuhudyat ng pagtatapos ng isang pangungusap na kaagad sinusundanng isa pang sugnay nang hindi gumagamit ng pangatnig. Maaaring gumamit ng tuldukuwit sa halip na tutuldok sa katapusan ng bating panimula ng lihampangalakal.</p>
+                            <p><Strong>Halimbawa: </Strong>Ginoo; <br>Bb;</p>
+                        <h4>9. PANIPI (“ ”)</h4>
+                            <p>- Inilalagay ito sa unahan at dulo ng isang salita. Ginagamit upang ipakita angbuong sinasabi ng isang nagsasalita o ang tuwirang sipi.</p>
+                            <p><Strong>Halimbawa: </Strong>“Hindi kinukupkop ang criminal, pinarurusahan,” sabi ng Pangulo.</p>
+                        <h4>10. PANAKLONG ( () )</h4>
+                            <p>- Ang mga panaklong ay ginagamit na pambukod sa salita o mga salitang hindidirektang kaugnay ng diwa ng pangungusap, gaya ng mga ginamit sapangungusap na ito. Ginagamit upang kulungin ang pamuno.</p>
+                            <p><Strong>Halimbawa: </Strong>Ang ating pambansang bayani (Jose Rizal) ang may-akda ng Noli MeTangere.</p>
+                        <h4>11. TUTULDOK-TULDOK O ELIPSIS (…)</h4>
+                            <p>- Nagpapahiwatig na kusang ibinitin ng nagsasalita ang karugtong ng nais sabihin. Upang ipakilalang may nawawalang salita o mga salita sa siniping pahayag. Tatlong tuldok ang ginagamit kung sa unahan o sa gitna ng pangungusap ay maynawawalang salita.</p>
+                            <p><Strong>Halimbawa: </Strong>Pinagtibay ng Pangulong Arroy… B. Sa mga sipi, kung may iniwang di-kailangang sipiin. <br>Kung ikaw’y maliligo sa tubig ay aagap upan...</p>    
+                    
+                    <div class="button-wrapper">
+                        <button class="unlock-button-6" class="unlock-design"> I-UNLOCK ANG  MGA PAGSUSULIT </button>
+                    </div>      
+                </div>
+            </div>
+  
+            <!--Lesson Button-->
+            <div class="btn-container">
+                <div id="lesson-1-btn" class="btn-design hidden">
+                    <button id="prevous-lesson-1">Bumalik</button>
+                    <button id="next-lesson-1">sunod</button>
+                </div>
+                <div id="lesson-2-btn" class="btn-design hidden">
+                    <button id="prevous-lesson-2">Bumalik</button>
+                    <button id="next-lesson-2">sunod</button>
+                </div>
+                <div id="lesson-3-btn" class="btn-design hidden">
+                    <button id="prevous-lesson-3">Bumalik</button>
+                    <button id="next-lesson-3">sunod</button>
+                </div>
+                <div id="lesson-4-btn" class="btn-design hidden">
+                    <button id="prevous-lesson-4">Bumalik</button>
+                    <button id="next-lesson-4">sunod</button>
+                </div>
+                <div id="lesson-5-btn" class="btn-design hidden">
+                    <button id="prevous-lesson-5">Bumalik</button>
+                    <button id="next-lesson-5">sunod</button>
+                </div>
+                <div id="lesson-6-btn" class="btn-design hidden">
+                    <button id="prevous-lesson-6">Bumalik</button>
+                    <button id="next-lesson-6">sunod</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Link to JavaScript file -->
+        <script src="../static/js/nav.js"></script>
+        <script src="../static/js/btnfunction.js"></script>
+        <script src="../static/js/lesson.js"></script>
+    </body>
+</html>
