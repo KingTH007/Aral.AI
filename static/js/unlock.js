@@ -35,5 +35,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-//show instruction
+document.addEventListener("DOMContentLoaded", () => {
+    // Add event listeners for each quiz type
+    const quizLinks = document.querySelectorAll('[id^="ToF-"], [id^="multiple-"], [id^="identify-"]');
+
+    // Helper function to hide all lesson titles
+    function hideAllInstruction() {
+        // Add 'hidden' class to all instruction containers
+        document.querySelectorAll(".instruction-design").forEach((instruction) => {
+            instruction.classList.add("hidden");
+        });
+    }
+
+    function hideAllContainer() {
+        // Add 'hidden' class to all containers
+        document.querySelectorAll(".container").forEach((container) => {
+            container.classList.add("hidden");
+        });
+    }
+
+    quizLinks.forEach((quizLink) => {
+        quizLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            hideAllInstruction();
+            hideAllContainer();
+            // Get the ID of the clicked quiz link (e.g., 'ToF-1-quiz')
+            const quizId = quizLink.id;
+            // Derive the instruction ID based on the quiz link's ID
+            const instructionId = `instruction-${quizId.split("-")[1]}-${quizId.split("-")[0]}`;
+
+            // Find the specific instruction element
+            const instructionElement = document.getElementById(instructionId);
+            // Remove 'hidden' class for the related instruction, if it exists
+            if (instructionElement) {
+                instructionElement.parentElement.classList.remove("hidden");
+                instructionElement.classList.remove("hidden");
+            } else {
+                console.error(`Instruction for ${instructionId} not found!`);
+            }
+        });
+    });
+});
+
 
