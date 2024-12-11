@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentLessonKey = "lesson1"; // Default to the first lesson
     let isTTSSpeaking = false; // Track if TTS is active
+    let isInLesson = false; // Track if the user is in a lesson view
 
     function speakLessonContent(lessonKey) {
         const lessonContent = lessonContents[lessonKey];
@@ -50,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Show the relevant buttons
         Object.values(buttonContainers).forEach(container => container.classList.add("hidden"));
         buttonContainers[lessonKey]?.classList.remove("hidden");
+
+        // Mark as in lesson
+        isInLesson = true;
     }
 
     function navigateLesson(direction) {
@@ -98,11 +102,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add alert for exiting lesson when TTS is active
     sidebarButtons.forEach(button => {
         button.addEventListener("click", (event) => {
+            // Only hide buttons if not currently in lesson view
+            if (!isInLesson) {
+                Object.values(buttonContainers).forEach(container => container.classList.add("hidden"));
+            }
+
             if (isTTSSpeaking) {
                 const userConfirmed = confirm("May TTS pa na naglalaro. Gusto mo bang itigil ang aralin?");
                 if (userConfirmed) {
                     speechSynthesis.cancel(); // Stop TTS
                     isTTSSpeaking = false;
+                    // If leaving lesson, hide buttons
+                    if (!isInLesson) {
+                        Object.values(buttonContainers).forEach(container => container.classList.add("hidden"));
+                    }
                 } else {
                     event.preventDefault(); // Prevent button action
                 }
@@ -123,4 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('beforeunload', () => {
         speechSynthesis.cancel();
     });
+
+    // Function to handle sidebar navigation
+    function handleSidebarNavigation() {
+        if (!isInLesson) {
+            // Hide the buttons if not in lesson view
+            Object.values(buttonContainers).forEach(container => container.classList.add("hidden"));
+        }
+    }
+
+    // Call this function to ensure the buttons are not hidden while in the lesson content
+    handleSidebarNavigation();
 });
