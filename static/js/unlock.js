@@ -1,4 +1,4 @@
-/* document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     // Disable all quizzes initially
     for (let i = 1; i <= 6; i++) {
         const quizList = document.querySelectorAll(`#filipino-quiz-${i} a`);
@@ -33,7 +33,7 @@
             console.error(`Unlock button ${i} not found`); // Debugging log
         }
     }
-}); */
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     // Add event listeners for each quiz type
